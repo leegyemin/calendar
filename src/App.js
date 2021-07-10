@@ -23,7 +23,6 @@ const App = () => {
     '20210711': ['task3'],
     '20210712': ['task3']*/
   });
-
   const [taskInfo, setTaskInfo] = useState({
     /*  task1: {
       title: '7월 Task111',

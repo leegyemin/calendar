@@ -1,11 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import Month from './Month';
 import Week from './Week';
 import CalendarHeader from './Header';
 
 const Index = ({ state, ...rest }) => {
-  const [firstWeekDays, setFirstWeekDays] = React.useState([]);
+  const [firstWeekDays, setFirstWeekDays] = useState([]);
 
   useEffect(() => {
     const firstDayOfMonth = moment(state.calendar).startOf('month'); // 해당 월의 1일의 Index 객체

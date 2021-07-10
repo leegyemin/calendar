@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Grid } from '@material-ui/core';
 
 const CalendarHeader = ({ state }) => {
-  const [dateToArray] = React.useState([
+  const [dateToArray] = useState([
     'Sunday',
     'Monday',
     'Tuesday',
@@ -12,7 +12,7 @@ const CalendarHeader = ({ state }) => {
     'Saturday'
   ]);
 
-  const [dayToArray, setDayToArray] = React.useState([]);
+  const [dayToArray, setDayToArray] = useState([]);
   useEffect(() => {
     if (state.week) {
       const temp = [];

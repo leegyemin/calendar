@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import _ from 'lodash';
 import { GetRandomColor } from '../../functions';
@@ -7,9 +7,9 @@ import { Grid, Typography } from '@material-ui/core';
 import { ModalAddTask } from '../modals';
 
 const Month = ({ firstWeekDays, state, taskDays, taskInfo, setTaskDays, setTaskInfo }) => {
-  const [items, setItems] = React.useState([]);
-  const [currentTask, setCurrentTask] = React.useState(null);
-  const [modalOpen, setModalOpen] = React.useState(false);
+  const [items, setItems] = useState([]);
+  const [currentTask, setCurrentTask] = useState(null);
+  const [modalOpen, setModalOpen] = useState(false);
 
   useEffect(() => {
     const temp = [];

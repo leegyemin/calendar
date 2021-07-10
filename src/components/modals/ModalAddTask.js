@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Button,
   Dialog,
@@ -21,7 +21,7 @@ const ModalAddTask = ({
   handleRemove,
   isEdit = selectedItem.taskID
 }) => {
-  const [selectedTask, setSelectedTask] = React.useState(null);
+  const [selectedTask, setSelectedTask] = useState(null);
 
   useEffect(() => {
     setSelectedTask(selectedItem);
