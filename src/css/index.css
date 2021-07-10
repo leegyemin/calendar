@@ -1,0 +1,58 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.calendar-header div:first-child > div {
+  border-left: none !important;
+}
+.calendar-header div:last-child > div {
+  border-right: none !important;
+}
+
+.MuiBadge-badge {
+  top: 13px !important;
+  left: -14px !important;
+}
+
+.task {
+  cursor: pointer;
+  height: 25px;
+  position: relative;
+  margin-right: -2px;
+  margin-top: 2px;
+}
+
+.lastTask {
+  margin-right: 0px;
+}
+
+.otherMonth {
+  color: gray;
+  opacity: 0.3;
+}
+.today {
+  background-color: #1a73e8;
+  border-radius: 50%;
+  width: 24px;
+  margin-left: 40% !important;
+  height: 24px;
+  text-align: center;
+  line-height: 24px !important;
+  cursor: pointer;
+  color: white;
+}
+.currentMonth {
+  font-weight: 600;
+}
+
+/*.week-area .task:last-child {*/
+/*  margin-right: 0px !important;*/
+/*}*/
