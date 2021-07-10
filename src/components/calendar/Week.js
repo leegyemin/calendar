@@ -1,8 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Grid } from '@material-ui/core';
 import _ from 'lodash';
-// TODO
-const Week = ({ state }) => {
+import moment from 'moment';
+
+const Week = ({ dayToArray, taskDays, taskInfo }) => {
   const [timeToArray] = useState({
     '00:00': '오전 12:00',
     '01:00': '오전 01:00',
@@ -29,23 +30,56 @@ const Week = ({ state }) => {
     '23:00': '오후 11:00',
     '12:00': '오후 12:00'
   });
-  const [test] = useState([
-    '',
-    '20210627',
-    '20210628',
-    '20210629',
-    '20210630',
-    '20210701',
-    '20210702',
-    '20210703'
-  ]);
-  const test1 = 1;
-  const test2 = 2;
-  const test3 = 4;
+
+  const timeToTaskRender = (day, time) => {
+    const width = 152;
+    const height = 70;
+    const taskIds = taskDays[day];
+    const idsLength = taskIds?.length;
+
+    if (idsLength > 0) {
+      let findStartTime = false;
+      let taskTitle = '';
+      let bgColor = '';
+      let diffCount = 0;
+
+      let diffStartTime = null;
+      let diffEndTime = null;
+
+      taskIds.forEach(id => {
+        if (taskInfo[id].startTime === time) {
+          findStartTime = true;
+          taskTitle = taskInfo[id].title;
+          bgColor = taskInfo[id].color;
+
+          diffStartTime = moment(taskInfo[id].startTime, 'hh:mm');
+          diffEndTime = moment(taskInfo[id].endTime, 'hh:mm');
+
+          diffCount = moment.duration(diffEndTime.diff(diffStartTime)).asHours();
+        }
+      });
+      if (findStartTime) {
+        return (
+          <div
+            style={{
+              position: 'absolute',
+              backgroundColor: bgColor,
+              width: `${width}px`,
+              height: `${height * diffCount + idsLength + diffCount}px`,
+              color: 'white'
+            }}>
+            {diffStartTime.format('h')}-{diffEndTime.format('h A')} <br /> taskTitle
+          </div>
+        );
+      }
+    }
+    return <div></div>;
+  };
+
   return (
     <>
       <Grid container direction='row'>
-        {test.map((item, index) => {
+        {dayToArray.map((item, index) => {
           return (
             <Grid item xs>
               <Grid
@@ -59,6 +93,7 @@ const Week = ({ state }) => {
                       item
                       style={{
                         border: '1px solid black',
+                        borderLeft: 'none',
                         borderTop: 'none',
                         height: '70px',
                         textAlign: 'center'
@@ -74,20 +109,7 @@ const Week = ({ state }) => {
                         height: '70px',
                         textAlign: 'center'
                       }}>
-                      {item === '20210628' && key === '06:00' ? (
-                        <div
-                          style={{
-                            backgroundColor: 'red',
-                            width: '100%',
-                            height: '100%',
-                            color: 'white'
-                          }}>
-                          {' '}
-                          6-7 AM <br /> Task1
-                        </div>
-                      ) : (
-                        ' '
-                      )}
+                      {timeToTaskRender(item.format('YYYYMMDD'), key)}
                     </div>
                   );
                 })}

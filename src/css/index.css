@@ -29,6 +29,9 @@ code {
   margin-right: -2px;
   margin-top: 2px;
 }
+.noneTask {
+  position: inherit !important;
+}
 
 .lastTask {
   margin-right: 0px;

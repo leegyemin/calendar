@@ -74,7 +74,7 @@ const Month = ({ firstWeekDays, state, taskDays, taskInfo, setTaskDays, setTaskI
     let startDate = null;
     let endDate = null;
 
-    // 시작 날짜 가 종료날짜보다 클 경우 swap
+    // 시작날짜 가 종료날짜보다 클 경우 swap
     if (updateTask.startDate > updateTask.endDate) {
       const temp = updateTask.startDate;
       updateTask.startDate = updateTask.endDate;
@@ -204,7 +204,6 @@ const Month = ({ firstWeekDays, state, taskDays, taskInfo, setTaskDays, setTaskI
                   }>
                   {value.day.format('D')}
                 </Typography>
-
                 {/*
                    NOTE 세로 Task Component Area
                 */}
@@ -213,7 +212,8 @@ const Month = ({ firstWeekDays, state, taskDays, taskInfo, setTaskDays, setTaskI
                     return (
                       <div
                         name={'task'}
-                        className={'task'}
+                        className={`task ${taskInfo[id].startDate === taskInfo[id].endDate &&
+                          'noneTask'}`}
                         style={{ position: 'relative', marginRight: '-2px' }}
                         onClick={event => handleClick(event, id)}
                         style={{ backgroundColor: taskInfo[id]?.color }}>

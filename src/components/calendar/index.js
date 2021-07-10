@@ -6,6 +6,7 @@ import CalendarHeader from './Header';
 
 const Index = ({ state, ...rest }) => {
   const [firstWeekDays, setFirstWeekDays] = useState([]);
+  const [dayToArray, setDayToArray] = useState([]);
 
   useEffect(() => {
     const firstDayOfMonth = moment(state.calendar).startOf('month'); // 해당 월의 1일의 Index 객체
@@ -21,15 +22,27 @@ const Index = ({ state, ...rest }) => {
     setFirstWeekDays(temp);
   }, [state]);
 
+  useEffect(() => {
+    if (state.week) {
+      const temp = [];
+      temp.push(null);
+      for (let i = 0; i < 7; i++) {
+        const otherDay = state.week.clone().add('d', i);
+        temp.push(otherDay);
+      }
+      setDayToArray(temp);
+    }
+  }, [state.week]);
+
   return (
     <div>
-      <CalendarHeader state={state} />
+      <CalendarHeader state={state} dayToArray={dayToArray} {...rest} />
       {state.toggleGroup === 'Month' ? (
         firstWeekDays.map(item => {
           return <Month firstWeekDays={item} state={state} {...rest} />;
         })
       ) : (
-        <Week state={state}></Week>
+        <Week dayToArray={dayToArray} {...rest}></Week>
       )}
     </div>
   );
