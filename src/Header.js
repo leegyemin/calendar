@@ -23,10 +23,10 @@ const Header = ({ state, setState }) => {
     const name = e.currentTarget.name;
 
     let nextWeek = null;
-    let calendar = null;
+    let otherCaelndar = null;
 
     if (state.toggleGroup === 'Month') {
-      calendar = state.calendar.add(value, 'M');
+      otherCaelndar = state.calendar.clone().add(value, 'M');
     } else {
       let n1 = 7;
       let n2 = 6;
@@ -35,12 +35,15 @@ const Header = ({ state, setState }) => {
         n2 = n1 - 1;
       }
       nextWeek = state.week.clone().add('d', n1);
-      calendar = nextWeek.clone().add('d', n2);
+      otherCaelndar = nextWeek.clone().add('d', n2);
     }
     setState({
       ...state,
       week: nextWeek ? nextWeek : state.week,
-      [name]: calendar
+      [name]:
+        otherCaelndar.format('YYYYMM') !== state.calendar.format('YYYYMM')
+          ? otherCaelndar
+          : state.calendar
     });
   };
 
@@ -54,10 +57,12 @@ const Header = ({ state, setState }) => {
 
   const handlToggle = (e, newAlignment) => {
     const name = e.currentTarget.name;
-    setState({
-      ...state,
-      [name]: newAlignment
-    });
+    if (newAlignment !== null) {
+      setState({
+        ...state,
+        [name]: newAlignment
+      });
+    }
   };
   return (
     <Grid container spacing={4}>

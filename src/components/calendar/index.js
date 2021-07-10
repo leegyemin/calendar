@@ -29,7 +29,7 @@ const Index = ({ state, ...rest }) => {
           return <Month firstWeekDays={item} state={state} {...rest} />;
         })
       ) : (
-        <Week>111</Week>
+        <Week state={state}></Week>
       )}
     </div>
   );
