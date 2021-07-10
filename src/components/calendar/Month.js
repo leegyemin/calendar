@@ -81,7 +81,10 @@ const Month = ({ firstWeekDays, state, taskDays, taskInfo, setTaskDays, setTaskI
       updateTask.endDate = temp;
     }
     // 시작 시간 이 종료시간보다 클 경우 swap
-    if (updateTask.startTime > updateTask.endTime) {
+    const diffStartTime = moment(updateTask.startTime, 'hh:mm');
+    const diffEndTime = moment(updateTask.endTime, 'hh:mm');
+
+    if (moment.duration(diffEndTime.diff(diffStartTime)).asMinutes() < 0) {
       const temp = updateTask.startTime;
       updateTask.startTime = updateTask.endTime;
       updateTask.endTime = temp;
