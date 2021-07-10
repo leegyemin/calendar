@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Grid } from '@material-ui/core';
 
-const CalendarHeader = ({}) => {
+const CalendarHeader = ({ state }) => {
   const [dateToArray] = React.useState([
     'Sunday',
     'Monday',
@@ -11,6 +11,19 @@ const CalendarHeader = ({}) => {
     'Friday',
     'Saturday'
   ]);
+
+  const [dayToArray, setDayToArray] = React.useState([]);
+  useEffect(() => {
+    if (state.week) {
+      const temp = [];
+      for (let i = 0; i < 7; i++) {
+        const otherDay = state.week.clone().add('d', i);
+        temp.push(otherDay.format('D'));
+      }
+      setDayToArray(temp);
+    }
+  }, [state.week]);
+
   return (
     <>
       <Grid container className={'calendar-header'}>
@@ -27,6 +40,12 @@ const CalendarHeader = ({}) => {
                     textAlign: 'center'
                   }}>
                   {item}
+                  {state.toggleGroup === 'Week' && (
+                    <>
+                      <br />
+                      {dayToArray[index]}
+                    </>
+                  )}
                 </div>
               </Grid>
             </>

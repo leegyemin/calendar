@@ -23,7 +23,7 @@ const Index = ({ state, ...rest }) => {
 
   return (
     <div>
-      <CalendarHeader />
+      <CalendarHeader state={state} />
       {state.toggleGroup === 'Month' ? (
         firstWeekDays.map(item => {
           return <Month firstWeekDays={item} state={state} {...rest} />;
