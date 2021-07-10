@@ -212,7 +212,7 @@ const Month = ({ firstWeekDays, state, taskDays, taskInfo, setTaskDays, setTaskI
                     return (
                       <div
                         name={'task'}
-                        className={`task ${taskInfo[id].startDate === taskInfo[id].endDate &&
+                        className={`task ${taskInfo[id]?.startDate === taskInfo[id]?.endDate &&
                           'noneTask'}`}
                         style={{ position: 'relative', marginRight: '-2px' }}
                         onClick={event => handleClick(event, id)}

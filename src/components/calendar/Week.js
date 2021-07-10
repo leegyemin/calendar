@@ -62,13 +62,13 @@ const Week = ({ dayToArray, taskDays, taskInfo }) => {
         return (
           <div
             style={{
-              position: 'absolute',
+              position: 'relative',
               backgroundColor: bgColor,
               width: `${width}px`,
               height: `${height * diffCount + idsLength + diffCount}px`,
               color: 'white'
             }}>
-            {diffStartTime.format('h')}-{diffEndTime.format('h A')} <br /> taskTitle
+            {diffStartTime.format('h')}-{diffEndTime.format('h A')} <br /> {taskTitle}
           </div>
         );
       }
