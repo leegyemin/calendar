@@ -54,12 +54,12 @@ const Month = ({ firstWeekDays, state, taskDays, taskInfo, setTaskDays, setTaskI
       ...taskInfo[id],
       startDate: taskInfo[id]?.startDate ? taskInfo[id].startDate : day.format('YYYYMMDD'),
       endDate: taskInfo[id]?.endDate ? taskInfo[id].endDate : day.format('YYYYMMDD'),
-      startTime: taskInfo[id]?.startTime ? taskInfo[id].startTime : moment().format('kk:00'),
+      startTime: taskInfo[id]?.startTime ? taskInfo[id].startTime : moment().format('HH:00'),
       endTime: taskInfo[id]?.endTime
         ? taskInfo[id].endTime
         : moment()
             .add(1, 'h')
-            .format('kk:00'),
+            .format('HH:00'),
       taskID: id
     };
     setCurrentTask(nextState);
