@@ -13,6 +13,9 @@ const App = () => {
     toggleGroup: 'Month'
   });
 
+  /*
+   * NOTE Calenadr, Task Data구조는 아래와 같이 생성됩니다.
+   * */
   const [taskDays, setTaskDays] = useState({
     /*'20210627': ['task4'],
     '20210628': ['task4'],
@@ -31,7 +34,6 @@ const App = () => {
       endDate: '20210710',
       startTime: '08:00',
       endTime: '13:00',
-      durationCount: 2
     },
     task2: {
       title: '7월 Task222',
@@ -40,7 +42,6 @@ const App = () => {
       endDate: '20210708',
       startTime: '08:00',
       endTime: '13:00',
-      durationCount: 0
     },
     task3: {
       title: '7월 Task333',
@@ -49,7 +50,6 @@ const App = () => {
       endDate: '20210712',
       startTime: '08:00',
       endTime: '13:00',
-      durationCount: 2
     },
     task4: {
       title: '6월 Task',
@@ -58,7 +58,6 @@ const App = () => {
       endDate: '20210629',
       startTime: '08:00',
       endTime: '13:00',
-      durationCount: 2
     }*/
   });
 
