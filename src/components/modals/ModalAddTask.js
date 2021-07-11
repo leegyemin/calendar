@@ -29,8 +29,13 @@ const ModalAddTask = ({
 
   const handleChange = event => {
     const $el = event.target;
+    const keyCode = event.keyCode;
     const name = $el.name;
     const value = $el.value;
+
+    if (keyCode == 13) {
+      event.preventDefault();
+    }
     setSelectedTask({
       ...selectedTask,
       [name]: event.target.type === 'date' ? value.replace(/-/gi, '') : value
@@ -73,6 +78,7 @@ const ModalAddTask = ({
                       fullWidth
                       value={selectedTask?.title ? selectedTask.title : ''}
                       onChange={handleChange}
+                      onKeyDown={handleChange}
                     />
                   </TableCell>
                 </TableRow>
