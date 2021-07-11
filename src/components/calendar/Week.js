@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Grid } from '@material-ui/core';
-import _ from 'lodash';
 import moment from 'moment';
+import _ from 'lodash';
 
 const Week = ({ dayToArray, taskDays, taskInfo }) => {
   const [timeToArray] = useState({
@@ -17,6 +17,7 @@ const Week = ({ dayToArray, taskDays, taskInfo }) => {
     '09:00': '오전 09:00',
     '10:00': '오전 10:00',
     '11:00': '오전 11:00',
+    '12:00': '오후 12:00',
     '13:00': '오후 01:00',
     '14:00': '오후 02:00',
     '15:00': '오후 03:00',
@@ -27,8 +28,7 @@ const Week = ({ dayToArray, taskDays, taskInfo }) => {
     '20:00': '오후 08:00',
     '21:00': '오후 09:00',
     '22:00': '오후 10:00',
-    '23:00': '오후 11:00',
-    '12:00': '오후 12:00'
+    '23:00': '오후 11:00'
   });
 
   const timeToTaskRender = (day, time) => {

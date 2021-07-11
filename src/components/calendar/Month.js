@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
-import _ from 'lodash';
-import { GetRandomColor } from '../../functions';
 import produce from 'immer';
 import { Grid, Typography } from '@material-ui/core';
 import { ModalAddTask } from '../modals';
+import { GetRandomColor } from '../../functions';
+import _ from 'lodash';
 
 const Month = ({ firstWeekDays, state, taskDays, taskInfo, setTaskDays, setTaskInfo }) => {
   const [items, setItems] = useState([]);
